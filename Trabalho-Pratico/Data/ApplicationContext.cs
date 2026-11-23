@@ -31,9 +31,9 @@ namespace Trabalho_Pratico.Data
             {
                 entity.ToTable("Fabricantes");
 
-                entity.HasKey(f => f.id);
+                entity.HasKey(f => f.Id);
 
-                entity.Property(f => f.nome)
+                entity.Property(f => f.Nome)
                       .IsRequired();
                       
                 entity.Property(f => f.CNPJ)
