@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Trabalho_Pratico.Data;
 
 internal class Program
@@ -6,13 +6,18 @@ internal class Program
     private static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+        builder.Logging.ClearProviders();
+        builder.Logging.AddConsole();
 
         // Suporte para Controllers e Views (MVC)
         builder.Services.AddControllersWithViews();
 
-        // Configura��o do DbContext com SQL Server
+        var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+            ?? throw new InvalidOperationException("Connection string 'DefaultConnection' não configurada.");
+
+        // Configuração do DbContext com SQL Server
         builder.Services.AddDbContext<ApplicationContext>(opt =>
-            opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
+            opt.UseSqlServer(connectionString)
         );
 
         builder.Services.AddEndpointsApiExplorer();
@@ -36,6 +41,7 @@ internal class Program
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
+        app.MapControllers();
 
         app.Run();
     }

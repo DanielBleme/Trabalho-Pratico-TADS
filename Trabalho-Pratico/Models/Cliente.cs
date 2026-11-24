@@ -5,20 +5,20 @@ namespace Trabalho_Pratico.Models
     public class Cliente
     {
         [Key]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string Nome { get; set; } 
+        public string Nome { get; set; } = string.Empty;
 
         [Required]
-        public string CPF { get; set; } 
+        public string CPF { get; set; } = string.Empty;
 
         [Required]
         [EmailAddress]
-        public string Email { get; set; } 
+        public string Email { get; set; } = string.Empty;
 
         [Required]
-        public string? Telefone { get; set; }
+        public string Telefone { get; set; } = string.Empty;
 
         public ICollection<Aluguel> Alugueis { get; set; } = new List<Aluguel>();
     }

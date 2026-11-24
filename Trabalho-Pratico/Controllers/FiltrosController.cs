@@ -82,10 +82,15 @@ namespace Trabalho_Pratico.Controllers
             var dataInicio = inicio ?? DateTime.Today.AddMonths(-1);
             var dataFim = fim ?? DateTime.Today;
 
+            if (dataFim.Date < dataInicio.Date)
+                return BadRequest("A data final deve ser igual ou posterior à data inicial.");
+
+            var limiteDataFim = dataFim.Date.AddDays(1);
+
             var query = await (from p in _context.Pagamentos
                                join a in _context.Alugueis on p.AluguelId equals a.Id
                                join c in _context.Clientes on a.ClienteId equals c.Id
-                               where p.DataPagamento >= dataInicio && p.DataPagamento <= dataFim
+                               where p.DataPagamento >= dataInicio.Date && p.DataPagamento < limiteDataFim
                                select new
                                {
                                    PagamentoId = p.Id,

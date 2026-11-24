@@ -9,10 +9,6 @@ namespace Trabalho_Pratico.Data
             : base(options)
         {
         }
-        public ApplicationContext()
-        {
-        }
-
         public DbSet<Fabricante> Fabricantes => Set<Fabricante>();
         public DbSet<Veiculo> Veiculos => Set<Veiculo>();
         public DbSet<Cliente> Clientes => Set<Cliente>();
@@ -37,7 +33,11 @@ namespace Trabalho_Pratico.Data
                       .IsRequired();
                       
                 entity.Property(f => f.CNPJ)
-                       .IsRequired();
+                      .IsRequired()
+                      .HasMaxLength(18);
+
+                entity.HasIndex(f => f.CNPJ)
+                      .IsUnique();
             });
 
             // ==========================================

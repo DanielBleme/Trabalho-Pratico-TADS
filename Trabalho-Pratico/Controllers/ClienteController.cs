@@ -25,11 +25,28 @@ namespace Trabalho_Pratico.Controllers
 
         // GET: api/clientes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Cliente>> GetCliente(int id)
+        public async Task<IActionResult> GetCliente(int id)
         {
             var cliente = await _context.Clientes
-                .Include(c => c.Alugueis)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Where(c => c.Id == id)
+                .Select(c => new
+                {
+                    c.Id,
+                    c.Nome,
+                    c.CPF,
+                    c.Email,
+                    c.Telefone,
+                    Alugueis = c.Alugueis.Select(a => new
+                    {
+                        a.Id,
+                        a.DataInicio,
+                        a.DataFimPrevista,
+                        a.DataDevolucao,
+                        a.ValorTotal,
+                        a.VeiculoId
+                    })
+                })
+                .FirstOrDefaultAsync();
 
             if (cliente == null) return NotFound(new { mensagem = "Cliente não encontrado." });
 
