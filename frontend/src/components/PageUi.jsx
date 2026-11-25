@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { AlertCircle, Check, LoaderCircle, X } from 'lucide-react'
 
 export function PageHeader({ eyebrow, title, description, action }) {

@@ -8,6 +8,9 @@ export async function api(path, { method = 'GET', body, signal } = {}) {
 
   if (response.status === 204) return null
   const contentType = response.headers.get('content-type') || ''
+  if (response.ok && !contentType.includes('application/json')) {
+    throw new Error('A API não respondeu com JSON. Verifique se o back-end está iniciado em http://localhost:5026.')
+  }
   const payload = contentType.includes('application/json')
     ? await response.json()
     : await response.text()

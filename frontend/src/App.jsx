@@ -1,4 +1,4 @@
-﻿import { useCallback, useState } from 'react'
+﻿import React, { useCallback, useState } from 'react'
 import { CalendarDays, CarFront, CircleHelp, CreditCard, Factory, Gauge, Users } from 'lucide-react'
 import Alugueis from './pages/Alugueis.jsx'
 import Clientes from './pages/Clientes.jsx'

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { CarFront, Gauge, Pencil, Plus, Search, Trash2 } from 'lucide-react'
 import { api, query } from '../api.js'
 import { DataFeedback, Dialog, FormError, PageCard, PageHeader } from '../components/PageUi.jsx'
