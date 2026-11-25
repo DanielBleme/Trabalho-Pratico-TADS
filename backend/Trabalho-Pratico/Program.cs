@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Trabalho_Pratico.Data;
 
 internal class Program
@@ -9,13 +9,13 @@ internal class Program
         builder.Logging.ClearProviders();
         builder.Logging.AddConsole();
 
-        // Suporte para Controllers e Views (MVC)
+
         builder.Services.AddControllersWithViews();
 
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
             ?? throw new InvalidOperationException("Connection string 'DefaultConnection' não configurada.");
 
-        // Configuração do DbContext com SQL Server
+
         builder.Services.AddDbContext<ApplicationContext>(opt =>
             opt.UseSqlServer(connectionString)
         );
@@ -24,7 +24,7 @@ internal class Program
 
         var app = builder.Build();
 
-        // Pipeline HTTP
+
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Home/Error");

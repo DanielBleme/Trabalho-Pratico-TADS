@@ -1,39 +1,46 @@
- # LocaOps
+﻿# Trabalho Prático TADS — LocaOps
 
-## Links do Projeto
+Sistema de gestão de locadora de veículos.
 
-* **Protótipo no Figma:** [[[Acessar Figma](https://www.figma.com/seu-link-aqui)](https://www.figma.com/make/vcF9xv49TbsRO1UEw7gqvN/Loja-Virtual-Sells-and-Tells?t=dTRsUmrzhF6axzDu-20&fullscreen=1&preview-route=%2F%23historia)](https://www.figma.com/make/75f1W4FYd5DyTfiv0Oy4cZ/Wireframes-da-LocaOps?t=kVjtuEElFayCiBVQ-20&fullscreen=1)
-  
-* **Relatório Técnico (SBC):** [SBC-TrabalhoPratico.pdf](https://github.com/user-attachments/files/35189150/SBC-TrabalhoPratico.pdf)
+Aluno: Daniel Rodrigues Bleme
+Período: 4º
 
-## Video-Pitch 
-Disponível no youtube: 
-https://youtu.be/d6YIH7pf1FI
+## Materiais do projeto
 
+- [Protótipo e wireframes no Figma](https://www.figma.com/make/75f1W4FYd5DyTfiv0Oy4cZ/Wireframes-da-LocaOps?t=kVjtuEElFayCiBVQ-20&fullscreen=1)
+- [Relatório técnico (SBC)](https://github.com/user-attachments/files/35189150/SBC-TrabalhoPratico.pdf)
+- [Vídeo pitch](https://youtu.be/d6YIH7pf1FI)
 
 ## Tecnologias
 
-* **Front-end:** React, Tailwind CSS, Lucide React
-* **Back-end:** | C#, .NET | 
-* **Banco de Dados:** SQL Server
+- Frontend: React, Vite e Lucide React.
+- Backend: C#, ASP.NET Core e Entity Framework Core.
+- Banco de dados: SQL Server.
 
-## Como rodar o projeto
+## Estrutura
 
-### 1. Banco de Dados
-Banco rodando na tabela `LocadoraVeiculoDb` no SQL Server e ajuste o usuário e senha no arquivo `dbconfig.js`.
+- `backend/Trabalho-Pratico/`: aplicação ASP.NET Core MVC e API.
+- `backend/Trabalho-Pratico.sln`: solução .NET.
+- `frontend/`: interface React.
 
-### 2. API (Back-end)
-Na pasta raiz, instale as dependências e inicie o servidor:
-```PowerShell
-dotnet run
+## Executar o backend
+
+Com o SQL Server Express local disponível e o banco `LocadoraVeiculosDb` configurado em `backend/Trabalho-Pratico/appsettings.json`:
+
+```powershell
+dotnet run --project backend/Trabalho-Pratico/Trabalho-Pratico.csproj --launch-profile http
 ```
-A API vai rodar em `(http://localhost:5026)`.
 
-### 3. Front-end
-Em outro terminal, entre na pasta do React e inicie a aplicação:
-```bash
-cd front
-npm install
-npm run dev
+O backend usa `http://localhost:5026`.
+
+## Executar o frontend
+
+Em outro terminal:
+
+```powershell
+cd frontend
+npm.cmd install
+npm.cmd run dev
 ```
-O Front vai rodar em ` http://127.0.0.1:5173`
+
+O frontend fica em `http://localhost:5173` e encaminha as chamadas `/api` para o backend.

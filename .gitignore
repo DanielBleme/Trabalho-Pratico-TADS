@@ -482,3 +482,9 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# React / Vite
+frontend/dist/
+frontend/.vite/
+frontend/.env*
+!frontend/.env.example

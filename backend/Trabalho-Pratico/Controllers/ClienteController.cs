@@ -18,9 +18,12 @@ namespace Trabalho_Pratico.Controllers
 
         // GET: api/clientes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes([FromQuery] string? busca, CancellationToken cancellationToken)
         {
-            return Ok(await _context.Clientes.ToListAsync());
+            var query = _context.Clientes.AsNoTracking().AsQueryable();
+            if (!string.IsNullOrWhiteSpace(busca))
+                query = query.Where(c => c.Nome.Contains(busca) || c.CPF.Contains(busca) || c.Email.Contains(busca));
+            return Ok(await query.OrderBy(c => c.Nome).ToListAsync(cancellationToken));
         }
 
         // GET: api/clientes/5

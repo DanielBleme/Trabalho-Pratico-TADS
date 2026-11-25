@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Trabalho_Pratico.Data;
@@ -23,7 +23,7 @@ namespace Trabalho_Pratico.Controllers
             return View(await alugueis.ToListAsync());
         }
 
-       
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null) return NotFound();
@@ -39,7 +39,7 @@ namespace Trabalho_Pratico.Controllers
             return View(aluguel);
         }
 
-        
+
         public IActionResult Create()
         {
             ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "Nome");
@@ -47,7 +47,7 @@ namespace Trabalho_Pratico.Controllers
             return View();
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ClienteId,VeiculoId,DataInicio,DataFimPrevista,ValorDiaria")] Aluguel aluguel)

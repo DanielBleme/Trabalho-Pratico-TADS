@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace Trabalho_Pratico.Models
@@ -26,7 +26,7 @@ namespace Trabalho_Pratico.Models
 
         public decimal? ValorTotal { get; set; }
 
-        // Chaves Estrangeiras
+
         [Required]
         [ForeignKey(nameof(Cliente))]
         public int ClienteId { get; set; }
@@ -40,4 +40,3 @@ namespace Trabalho_Pratico.Models
         public ICollection<Pagamento> Pagamentos { get; set; } = new List<Pagamento>();
     }
 }
-
