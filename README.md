@@ -9,7 +9,7 @@ Período: 4º
 
 - [Protótipo e wireframes no Figma](https://www.figma.com/make/75f1W4FYd5DyTfiv0Oy4cZ/Wireframes-da-LocaOps?t=kVjtuEElFayCiBVQ-20&fullscreen=1)
 - [Relatório técnico (SBC)](https://github.com/user-attachments/files/35189150/SBC-TrabalhoPratico.pdf)
-- [Vídeo pitch](https://youtu.be/d6YIH7pf1FI)
+- [Vídeo pitch](https://youtu.be/7JHQImul70s)
 
 ## Tecnologias
 
